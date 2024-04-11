@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class RegistrationRequest {
     @NotEmpty(message = "Firstname is mandatory")
     @NotBlank(message = "Firstname is mandatory")
-    private String firstName;
+    private String firstname;
     @NotEmpty(message = "lastname is mandatory")
     @NotBlank(message = "lastname is mandatory")
     private String lastname;
