@@ -32,10 +32,10 @@ public class JwtService {
 
 
     public String generateToken(UserDetails userDetails){
-        return generateClaims(new HashMap<>(), userDetails);
+        return generateToken(new HashMap<>(), userDetails);
     }
 
-    private String generateClaims(HashMap<String, Object> claims, UserDetails userDetails) {
+    public String generateToken(HashMap<String, Object> claims, UserDetails userDetails) {
         
         return buildToken(claims, userDetails, jwtExpiration);
     }
