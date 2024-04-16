@@ -1,5 +1,7 @@
 package com.derster.booknetwork.user;
 
+import com.derster.booknetwork.book.Book;
+import com.derster.booknetwork.history.BookTransactionHistory;
 import com.derster.booknetwork.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -40,6 +42,12 @@ public class User implements UserDetails, Principal {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Book> books;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionHistory> histories;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
