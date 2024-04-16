@@ -12,7 +12,7 @@ public interface BookRepository extends JpaRepository<Book, Integer>, JpaSpecifi
             """
             SELECT book
             FROM Book book
-            WHERE book.archived = false 
+            WHERE book.archived = false
             AND book.shareable = true
             AND book.owner.id != :userId
             """
