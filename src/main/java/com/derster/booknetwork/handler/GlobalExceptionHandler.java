@@ -1,5 +1,6 @@
 package com.derster.booknetwork.handler;
 
+import com.derster.booknetwork.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,6 +80,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(INTERNAL_SERVER_ERROR)
                 .body(ExceptionResponse.builder()
                         .businessErrorDescription("Internal error, contact the admin")
+                        .error(exp.getMessage())
+                        .build());
+
+    }
+
+    @ExceptionHandler(OperationNotPermittedException.class)
+    public ResponseEntity<ExceptionResponse> handlerException(OperationNotPermittedException exp){
+        return ResponseEntity.status(BAD_REQUEST)
+                .body(ExceptionResponse.builder()
                         .error(exp.getMessage())
                         .build());
 
